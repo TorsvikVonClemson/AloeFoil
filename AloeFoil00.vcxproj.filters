@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{843e974d-8c0e-4f0e-81d9-940f1e875586}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Rendering">
+      <UniqueIdentifier>{245ba9b7-a44b-4e72-bb1f-6f56db822413}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Window">
+      <UniqueIdentifier>{7b543f48-9431-472e-b4f4-ebc24db9676d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Natives">
+      <UniqueIdentifier>{8d172194-9c7e-47be-bfb0-bd01e93db410}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TestApps">
+      <UniqueIdentifier>{98e62509-99f8-47de-8b21-e4882424b492}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stronghold">
+      <UniqueIdentifier>{64bbf3cb-1c4f-4205-a2cf-a4fb95d3f701}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stronghold\debug">
+      <UniqueIdentifier>{7a46e9bf-c9cf-426e-a159-f39440d69d09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stronghold\run">
+      <UniqueIdentifier>{fc1dd507-ae9f-4416-97e9-9ba46c16601d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stronghold\tools">
+      <UniqueIdentifier>{57c89c68-1657-4e53-84b5-8c5edc672ec9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{2659c574-de25-4f36-ab85-e8aa599b2d0b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Natives\native.cpp">
+      <Filter>Source Files\Graphics\Natives</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Rendering\Renderer.cpp">
+      <Filter>Source Files\Graphics\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Rendering\Renderable.cpp">
+      <Filter>Source Files\Graphics\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Window\window.cpp">
+      <Filter>Source Files\Graphics\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="TestApps\mapTest.cpp">
+      <Filter>Source Files\TestApps</Filter>
+    </ClCompile>
+    <ClCompile Include="TestApps\sheetTest.cpp">
+      <Filter>Source Files\TestApps</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Window\mouse.cpp">
+      <Filter>Source Files\Graphics\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Window\timer.cpp">
+      <Filter>Source Files\Graphics\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="TestApps\Hosono.cpp">
+      <Filter>Source Files\TestApps</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Natives\hexagon.cpp">
+      <Filter>Source Files\Graphics\Natives</Filter>
+    </ClCompile>
+    <ClCompile Include="Stronghold\gameBoard.cpp">
+      <Filter>Source Files\Stronghold</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Rendering\trueType.cpp">
+      <Filter>Source Files\Graphics\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Stronghold\debug\debugOld.cpp">
+      <Filter>Source Files\Stronghold\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Stronghold\debug\debug.cpp">
+      <Filter>Source Files\Stronghold\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Stronghold\tools\grid.cpp">
+      <Filter>Source Files\Stronghold\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Stronghold\run\run.cpp">
+      <Filter>Source Files\Stronghold\run</Filter>
+    </ClCompile>
+    <ClCompile Include="Stronghold\run\title.cpp">
+      <Filter>Source Files\Stronghold\run</Filter>
+    </ClCompile>
+    <ClCompile Include="maths.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="music.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gameMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Graphics\Natives\native.h">
+      <Filter>Source Files\Graphics\Natives</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Rendering\Renderable.h">
+      <Filter>Source Files\Graphics\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Rendering\Renderer.h">
+      <Filter>Source Files\Graphics\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Window\window.h">
+      <Filter>Source Files\Graphics\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="TestApps\mapTest.h">
+      <Filter>Source Files\TestApps</Filter>
+    </ClInclude>
+    <ClInclude Include="TestApps\sheetTest.h">
+      <Filter>Source Files\TestApps</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Window\mouse.h">
+      <Filter>Source Files\Graphics\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Window\timer.h">
+      <Filter>Source Files\Graphics\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="TestApps\Hosono.h">
+      <Filter>Source Files\TestApps</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Natives\hexagon.h">
+      <Filter>Source Files\Graphics\Natives</Filter>
+    </ClInclude>
+    <ClInclude Include="Stronghold\gameBoard.h">
+      <Filter>Source Files\Stronghold</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Rendering\trueType.h">
+      <Filter>Source Files\Graphics\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Stronghold\debug\debugOld.h">
+      <Filter>Source Files\Stronghold\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Stronghold\debug\debug.h">
+      <Filter>Source Files\Stronghold\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Stronghold\tools\grid.h">
+      <Filter>Source Files\Stronghold\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Stronghold\run\run.h">
+      <Filter>Source Files\Stronghold\run</Filter>
+    </ClInclude>
+    <ClInclude Include="Stronghold\run\title.h">
+      <Filter>Source Files\Stronghold\run</Filter>
+    </ClInclude>
+    <ClInclude Include="maths.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="music.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gameMap.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
