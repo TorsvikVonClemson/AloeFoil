@@ -41,6 +41,9 @@ void Grid::clearGrid(int boardRadius)
 			for (int k = -boardRadius; k <= boardRadius; k++)
 			{
 				m_Grid[25 + i][25 + j][25 + k] = 0;
+				m_GridLayeri[25 + i][25 + j][25 + k] = 0;
+				m_GridLayer1[25 + i][25 + j][25 + k] = 0;
+				m_GridLayer2[25 + i][25 + j][25 + k] = 0;
 			}
 		}
 	}
@@ -595,6 +598,8 @@ void Grid::setCursor(int value)
 
 void Grid::randomizeGrid(int boardRadius)
 {
+	clearOverlayGrid(boardRadius);
+	clearGrid(boardRadius);
 	srand(time(NULL));
 	m_RiverDirection = (rand() % 6)+1;
 	rollRivers(boardRadius);
@@ -1388,8 +1393,9 @@ void Grid::chooseCoast(int i, int j, int k, int x, int y)
 	Uint8 surroundingTiles = m_Maths->compareAdjacentHex(m_GridLayer2, i, j, k, 33, 34, 999);
 	switch (surroundingTiles) {
 
+	//Using Sprite 26
+	case 0x3F:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[26], m_ViewPort, 0, NULL, SDL_FLIP_NONE);break;
 	//Using Sprite 50
-	case 0x3F:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[50], m_ViewPort, 0, NULL, SDL_FLIP_NONE);break;
 	case 0x00:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[50], m_ViewPort, 0, NULL, SDL_FLIP_NONE);break;
 
 	//using sprite 51
@@ -1445,6 +1451,37 @@ void Grid::chooseCoast(int i, int j, int k, int x, int y)
 	case 0x05:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[57], m_ViewPort, 240, NULL, SDL_FLIP_NONE); break;
 	case 0x0A:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[57], m_ViewPort, 300, NULL, SDL_FLIP_NONE); break;
 
+	//using sprite 58
+	case 0x15:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[58], m_ViewPort, 0, NULL, SDL_FLIP_NONE); break;
+	case 0x2A:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[58], m_ViewPort, 60, NULL, SDL_FLIP_NONE); break;
+
+	//using sprite 59
+	case 0x32:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 0, NULL, SDL_FLIP_NONE); break;
+	case 0x25:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 60, NULL, SDL_FLIP_NONE); break;
+	case 0x0B:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 120, NULL, SDL_FLIP_NONE); break;
+	case 0x16:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 180, NULL, SDL_FLIP_NONE); break;
+	case 0x2C:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 240, NULL, SDL_FLIP_NONE); break;
+	case 0x19:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 300, NULL, SDL_FLIP_NONE); break;
+
+	case 0x1A:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 0, NULL, SDL_FLIP_HORIZONTAL); break;
+	case 0x34:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 60, NULL, SDL_FLIP_HORIZONTAL); break;
+	case 0x29:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 120, NULL, SDL_FLIP_HORIZONTAL); break;
+	case 0x13:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 180, NULL, SDL_FLIP_HORIZONTAL); break;
+	case 0x26:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 240, NULL, SDL_FLIP_HORIZONTAL); break;
+	case 0x0D:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 300, NULL, SDL_FLIP_HORIZONTAL); break;
+
+	//using sprite 60
+	case 0x17:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[60], m_ViewPort, 0, NULL, SDL_FLIP_NONE); break;
+	case 0x2E:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[60], m_ViewPort, 60, NULL, SDL_FLIP_NONE); break;
+	case 0x1D:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[60], m_ViewPort, 120, NULL, SDL_FLIP_NONE); break;
+	case 0x3A:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[60], m_ViewPort, 180, NULL, SDL_FLIP_NONE); break;
+	case 0x35:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[60], m_ViewPort, 240, NULL, SDL_FLIP_NONE); break;
+	case 0x2B:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[60], m_ViewPort, 300, NULL, SDL_FLIP_NONE); break;
+
+//using sprite 61
+	case 0x36:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[61], m_ViewPort, 0, NULL, SDL_FLIP_NONE); break;
+	case 0x2D:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[61], m_ViewPort, 60, NULL, SDL_FLIP_NONE); break;
+	case 0x1B:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[61], m_ViewPort, 120, NULL, SDL_FLIP_NONE); break;
 
 	//throw error
 	default:

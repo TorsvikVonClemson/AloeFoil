@@ -48,7 +48,7 @@ int GameMap::run()
 	m_Grid->renderGrids(m_Pace, m_BoardRadius, 0x00, 0x00, 0x00, m_CentOffsetX, m_CentOffsetY, m_Native, m_HexSize, m_Width, m_Height);
 	//m_ImaginaryGrid->printGrid(m_Value, m_BoardRadius, 0x00, 0x00, 0x00, m_CentOffsetX, m_CentOffsetY, m_Native, m_HexSize, m_Width, m_Height);
 
-	m_Grid->clearGrid(m_BoardRadius);
+	//m_Grid->clearGrid(m_BoardRadius);
 	m_Grid->clearOverlayGrid(m_BoardRadius);
 
 	//m_MouseHeld = m_Grid->cursorGrid(m_Width, m_Height, m_Pace, m_BoardRadius, m_MouseHeld, m_CentOffsetX, m_CentOffsetY, m_HexSize, m_SpaceSwitch);
@@ -82,4 +82,5 @@ void GameMap::keyboard()
 	if (!m_KeyPressed[SDL_SCANCODE_UP] && !m_KeyPressed[SDL_SCANCODE_DOWN] && m_KeyPressed[SDL_SCANCODE_LEFT] && !m_KeyPressed[SDL_SCANCODE_RIGHT]) { m_CentOffsetX -= 5; }
 	if (m_KeyPressed[SDL_SCANCODE_UP] && !m_KeyPressed[SDL_SCANCODE_DOWN] && m_KeyPressed[SDL_SCANCODE_LEFT] && !m_KeyPressed[SDL_SCANCODE_RIGHT]) { m_CentOffsetY -= 5, m_CentOffsetX -= 5; }
 
+	if (m_KeyPressed[SDL_SCANCODE_R]) { m_Randomize = true; }
 }
