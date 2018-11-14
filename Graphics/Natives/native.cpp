@@ -57,6 +57,15 @@ void Native::fillRect(int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 
 	SDL_SetRenderDrawColor(m_Renderer->getRenderer(), 0x00, 0x00, 0x00, 0xFF);
 }
 
+void Native::transRect(int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue, Uint8 alpha)
+{
+	SDL_Rect fillRect = { x, y, w, h };
+	SDL_SetRenderDrawColor(m_Renderer->getRenderer(), red, green, blue,alpha);
+	SDL_RenderFillRect(m_Renderer->getRenderer(), &fillRect);
+
+	SDL_SetRenderDrawColor(m_Renderer->getRenderer(), 0x00, 0x00, 0x00, alpha);
+}
+
 void Native::drawHexagon(double size, int centX, int centY, Uint8 red, Uint8 green, Uint8 blue)
 {
 	SDL_SetRenderDrawColor(m_Renderer->getRenderer(), red, green, blue, 0xFF);

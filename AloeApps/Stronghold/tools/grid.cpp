@@ -21,7 +21,6 @@ Grid::Grid(int boardRadius, Window* window, Renderer* renderer, Renderable* rend
 	m_Window = window;
 	m_Renderer = renderer;
 	m_Renderable = renderable;
-	m_ViewPort = m_ViewPort;
 
 	m_Maths = new Maths();
 }

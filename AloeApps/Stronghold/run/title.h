@@ -12,7 +12,7 @@
 class Title
 {
 public:
-	Title(int width, int height,Renderer** renderer,Window* window);
+	Title(int width, int height,Renderer* renderer,Window* window);
 	~Title();
 	int run();
 	bool front();
@@ -32,7 +32,7 @@ private:
 	SDL_Rect m_SSprite[100];
 	SDL_Rect m_ViewPort;
 
-	Renderer** m_Renderer = NULL;
+	Renderer* m_Renderer = NULL;
 	Renderable* m_SpriteSheet = NULL;
 	Renderable* m_MootSheet = NULL;
 	Window* m_Window = NULL;

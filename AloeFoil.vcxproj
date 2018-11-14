@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AloeApps\Cagiyama\timedCounter.cpp" />
+    <ClCompile Include="AloeApps\Cagiyama\timeRect.cpp" />
     <ClCompile Include="AloeApps\Stronghold\debug\debug.cpp" />
     <ClCompile Include="AloeApps\Stronghold\debug\debugOld.cpp" />
     <ClCompile Include="AloeApps\Stronghold\gameBoard.cpp" />
@@ -42,6 +44,8 @@
     <ClCompile Include="TestApps\sheetTest.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AloeApps\Cagiyama\timedCounter.h" />
+    <ClInclude Include="AloeApps\Cagiyama\timeRect.h" />
     <ClInclude Include="AloeApps\Stronghold\debug\debug.h" />
     <ClInclude Include="AloeApps\Stronghold\debug\debugOld.h" />
     <ClInclude Include="AloeApps\Stronghold\gameBoard.h" />
@@ -164,6 +168,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>

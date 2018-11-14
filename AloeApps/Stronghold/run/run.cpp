@@ -17,7 +17,7 @@ void Run::controlSwitcher()
 			if (m_Debug != NULL) { delete m_Debug; m_Debug = NULL; }
 			if (m_Title == NULL)
 			{
-				m_Title=new Title(m_Width,m_Height,&m_Renderer,m_Window);
+				m_Title=new Title(m_Width,m_Height,m_Renderer,m_Window);
 			}
 			else
 			{

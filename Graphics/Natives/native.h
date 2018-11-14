@@ -12,6 +12,7 @@ public:
 	void testRect();
 	void rect(int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue);
 	void fillRect(int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue);
+	void transRect(int x, int y, int w, int h, Uint8 red, Uint8 green, Uint8 blue, Uint8 alpha);
 	void drawHexagon(double size, int centX, int centY, Uint8 red, Uint8 green, Uint8 blue);
 	void drawHexGrid(double size, int radius, int centOffsetX, int centOffsetY);
 
