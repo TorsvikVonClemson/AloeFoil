@@ -1463,12 +1463,12 @@ void Grid::chooseCoast(int i, int j, int k, int x, int y)
 	case 0x2C:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 240, NULL, SDL_FLIP_NONE); break;
 	case 0x19:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 300, NULL, SDL_FLIP_NONE); break;
 
-	case 0x1A:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 0, NULL, SDL_FLIP_HORIZONTAL); break;
-	case 0x34:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 60, NULL, SDL_FLIP_HORIZONTAL); break;
-	case 0x29:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 120, NULL, SDL_FLIP_HORIZONTAL); break;
-	case 0x13:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 180, NULL, SDL_FLIP_HORIZONTAL); break;
-	case 0x26:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 240, NULL, SDL_FLIP_HORIZONTAL); break;
-	case 0x0D:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 300, NULL, SDL_FLIP_HORIZONTAL); break;
+	case 0x1A:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 0, NULL, SDL_FLIP_VERTICAL); break;
+	case 0x34:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 60, NULL, SDL_FLIP_VERTICAL); break;
+	case 0x29:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 120, NULL, SDL_FLIP_VERTICAL); break;
+	case 0x13:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 180, NULL, SDL_FLIP_VERTICAL); break;
+	case 0x26:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 240, NULL, SDL_FLIP_VERTICAL); break;
+	case 0x0D:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[59], m_ViewPort, 300, NULL, SDL_FLIP_VERTICAL); break;
 
 	//using sprite 60
 	case 0x17:m_Renderer->render(x, y, m_Renderable->getRenderable(), &m_sprite[60], m_ViewPort, 0, NULL, SDL_FLIP_NONE); break;
