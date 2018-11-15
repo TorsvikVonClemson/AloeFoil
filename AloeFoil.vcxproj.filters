@@ -15,15 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="maths.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="music.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Graphics\Natives\hexagon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -60,9 +51,6 @@
     <ClCompile Include="AloeApps\Stronghold\debug\debug.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AloeApps\Stronghold\debug\debugOld.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="AloeApps\Stronghold\run\run.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -70,9 +58,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AloeApps\Stronghold\tools\grid.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AloeApps\Stronghold\gameBoard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AloeApps\Stronghold\gameMap.cpp">
@@ -84,14 +69,20 @@
     <ClCompile Include="AloeApps\Cagiyama\timedCounter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Tools\maths.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools\music.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AloeApps\Stronghold\tools\musicPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="maths.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="music.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Graphics\Natives\hexagon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -125,13 +116,7 @@
     <ClInclude Include="TestApps\sheetTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AloeApps\Stronghold\gameBoard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AloeApps\Stronghold\debug\debug.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AloeApps\Stronghold\debug\debugOld.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AloeApps\Stronghold\run\run.h">
@@ -152,6 +137,15 @@
     <ClInclude Include="AloeApps\Cagiyama\timedCounter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Tools\maths.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools\music.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AloeApps\Stronghold\tools\musicPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="libjpeg-9.dll" />
@@ -165,6 +159,9 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="Media\Bionic Leviathan.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="AloeApps\Stronghold\media\Bionic Leviathan.wav">
       <Filter>Resource Files</Filter>
     </Media>
   </ItemGroup>
@@ -223,9 +220,20 @@
     <Image Include="Media\Up_Arrow.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="AloeApps\Stronghold\media\ForeverAlphaSTitle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="AloeApps\Stronghold\media\HexSprites.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="AloeApps\Stronghold\media\MootTest00.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Media\lucon.ttf" />
     <Font Include="Media\NiseSega.ttf" />
+    <Font Include="AloeApps\Stronghold\media\lucon.ttf" />
+    <Font Include="AloeApps\Stronghold\media\NiseSega.ttf" />
   </ItemGroup>
 </Project>

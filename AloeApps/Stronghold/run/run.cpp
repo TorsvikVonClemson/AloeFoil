@@ -7,6 +7,9 @@ Run::Run(int width, int height, Window * window, Renderer * renderer)
 
 	m_Window = window;
 	m_Renderer = renderer;
+	//	Music music;
+
+	//music.loadMusic();
 }
 
 void Run::controlSwitcher()

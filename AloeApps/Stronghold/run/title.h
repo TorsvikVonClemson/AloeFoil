@@ -7,7 +7,7 @@
 #include "..\..\Graphics\Rendering\Renderable.h"
 #include "..\..\Graphics\Rendering\Renderer.h"
 #include "..\..\Graphics\Rendering\trueType.h"
-#include "..\..\maths.h"
+#include "..\..\Tools\maths.h"
 
 class Title
 {
@@ -27,6 +27,7 @@ private:
 	int m_State=0;
 
 	bool m_Highlight = false;
+	bool m_MouseHeld = false;
 
 	SDL_Rect m_Sprite[100];
 	SDL_Rect m_SSprite[100];

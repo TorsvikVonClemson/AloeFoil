@@ -9,11 +9,11 @@ Title::Title(int width,int height, Renderer* renderer, Window* window)
 
 	m_Maths = new Maths();
 
-	m_SpriteSheet=new Renderable("Media/ForeverAlphaSTitle.png", renderer->getRenderer(), width, height);
-	m_MootSheet= new Renderable("Media/MootTest00.png", renderer->getRenderer(), width, height);
+	m_SpriteSheet=new Renderable("AloeApps/StrongHold/Media/ForeverAlphaSTitle.png", renderer->getRenderer(), width, height);
+	m_MootSheet= new Renderable("AloeApps/StrongHold/Media/MootTest00.png", renderer->getRenderer(), width, height);
 
 	m_SEGAFont = new TrueType(renderer);
-	m_SEGAFont->setFont("Media/NiseSega.ttf", 70);
+	m_SEGAFont->setFont("AloeApps/StrongHold/Media/NiseSega.ttf", 70);
 
 	m_ViewPort.x = 0;
 	m_ViewPort.y = 0;
@@ -93,8 +93,6 @@ bool Title::front()
 	//Moot Loop
 	SDL_RenderSetScale(m_Renderer->getRenderer(),1,1);
 	m_Renderer->render((m_Width / 2) + (3 * m_Sprite[3].w), m_Height / 2, m_MootSheet->getRenderable(), &m_SSprite[21 + (m_Frame / 12)], &m_ViewPort, 0, NULL, SDL_FLIP_NONE);
-	//SDL_RenderSetScale((*m_Renderer)->getRenderer(), 4, 4);
-	//(*m_Renderer)->render(0,0, m_MootSheet->getRenderable(), &m_SSprite[21 + (m_Frame / 12)], &m_ViewPort, 0, NULL, SDL_FLIP_NONE);
 
 	if (label(m_Width/2 - (4 * m_Sprite[3].w), m_Height/2, 7, 3, "DEBUG")) { return true; }
 
@@ -105,6 +103,7 @@ int Title::menu()
 {
 	if (label(m_Width- (8 * m_Sprite[3].w), 0, 7, 3, "TESTS")) { return 1; }
 	if (label(m_Width - (8 * m_Sprite[3].w), 0+(4 * m_Sprite[3].h), 7, 3, "ROLL MAP")) { return 2; }
+	if (label(m_Width - (8 * m_Sprite[3].w), 0 + (8 * m_Sprite[3].h), 7, 3, "MUSIC ROOM")) { return 2; }
 
 	if (label(0, m_Height - (3 * m_Sprite[3].h), 2, 2, " ")) { return 9; }
 	SDL_RenderSetScale(m_Renderer->getRenderer(), 1, 1);
@@ -114,14 +113,32 @@ int Title::menu()
 
 bool Title::button(Window * window, int xMin, int xMax, int yMin, int yMax)
 {
+
+
 	if (m_Maths->findRect(window, xMin, xMax, yMin, yMax))
 	{
 		m_Highlight = true;
-		if (m_Window->getMouseButton() == SDL_BUTTON_LEFT)
+		if (m_Window->getMouseButton() == SDL_BUTTON_LEFT  && !m_MouseHeld)
 		{
+			m_MouseHeld = true;
 			return true;
 		}
+		else if(!m_Window->getMouseButton() == SDL_BUTTON_LEFT && m_MouseHeld)
+		{
+			m_MouseHeld = false;
+		}
 		return false;
+	}
+	else {
+		if (m_Window->getMouseButton() == SDL_BUTTON_LEFT && !m_MouseHeld)
+		{
+			m_MouseHeld = true;
+
+		}
+		else if (!m_Window->getMouseButton() == SDL_BUTTON_LEFT && m_MouseHeld)
+		{
+			m_MouseHeld = false;
+		}
 	}
 	m_Highlight = false;
 	return false;

@@ -28,7 +28,7 @@ GameMap::GameMap(int width, int height, Renderer * renderer, Window * window)
 
 	m_Native = new Native(width, height, renderer);
 
-	m_Renderable = new Renderable("Media/HexSprites.png", renderer->getRenderer(), width, height);
+	m_Renderable = new Renderable("AloeApps/StrongHold/Media/HexSprites.png", renderer->getRenderer(), width, height);
 
 	m_Grid = new Grid(m_BoardRadius, m_Window,m_Renderer,m_Renderable,&m_ViewPort);
 
@@ -42,18 +42,13 @@ int GameMap::run()
 	int vj = 0;
 	int vk = 0;
 
-	if (m_Randomize) { m_Grid->randomizeGrid(m_BoardRadius); m_Randomize = false; }
+	if (m_Randomize) { m_Grid->randomizeGrid(); m_Randomize = false; }
 
-	//m_ImaginaryGrid->printObjectGrid(m_Value, m_BoardRadius, 0x00, 0x00, 0x00, m_CentOffsetX, m_CentOffsetY, m_Native, m_HexSize, m_Width, m_Height);
-	m_Grid->renderGrids(m_Pace, m_BoardRadius, 0x00, 0x00, 0x00, m_CentOffsetX, m_CentOffsetY, m_Native, m_HexSize, m_Width, m_Height);
-	//m_ImaginaryGrid->printGrid(m_Value, m_BoardRadius, 0x00, 0x00, 0x00, m_CentOffsetX, m_CentOffsetY, m_Native, m_HexSize, m_Width, m_Height);
+	m_Grid->renderGrids(m_Pace, m_CentOffsetX, m_CentOffsetY, m_Native, m_HexSize, m_Width, m_Height);
 
-	//m_Grid->clearGrid(m_BoardRadius);
-	m_Grid->clearOverlayGrid(m_BoardRadius);
+	m_Grid->clearOverlayGrid();
 
-	//m_MouseHeld = m_Grid->cursorGrid(m_Width, m_Height, m_Pace, m_BoardRadius, m_MouseHeld, m_CentOffsetX, m_CentOffsetY, m_HexSize, m_SpaceSwitch);
-
-	m_Grid->heuristicBloom(10, m_BoardRadius);
+	m_Grid->heuristicBloom(10);
 
 	m_Grid->findPath();
 

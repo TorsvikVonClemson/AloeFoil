@@ -4,6 +4,7 @@ PRE_MODE KEY
 1: Stronghold
 2: Cagiyama
 */
+
 #define PRE_MODE 1
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
@@ -30,8 +31,6 @@ PRE_MODE KEY
 
 #endif
 
-//#include "music.h"
-
 
 int main(int argc, char* args[])
 {
@@ -52,15 +51,9 @@ int main(int argc, char* args[])
 	TimedCounter timedCounter(1000, 200, &window, &renderer);
 #endif
 	
-	//	Music music;
-
-	//music.loadMusic();
-
 	while (!window.isClosed())
 	{
 		window.update();
-	//SDL_ShowCursor(SDL_DISABLE);
-	//SDL_SetRelativeMouseMode(SDL_TRUE);
 		renderer.clear();
 #if PRE_MODE==1
 		stronghold.controlSwitcher();

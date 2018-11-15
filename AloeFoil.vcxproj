@@ -22,12 +22,11 @@
     <ClCompile Include="AloeApps\Cagiyama\timedCounter.cpp" />
     <ClCompile Include="AloeApps\Cagiyama\timeRect.cpp" />
     <ClCompile Include="AloeApps\Stronghold\debug\debug.cpp" />
-    <ClCompile Include="AloeApps\Stronghold\debug\debugOld.cpp" />
-    <ClCompile Include="AloeApps\Stronghold\gameBoard.cpp" />
     <ClCompile Include="AloeApps\Stronghold\gameMap.cpp" />
     <ClCompile Include="AloeApps\Stronghold\run\run.cpp" />
     <ClCompile Include="AloeApps\Stronghold\run\title.cpp" />
     <ClCompile Include="AloeApps\Stronghold\tools\grid.cpp" />
+    <ClCompile Include="AloeApps\Stronghold\tools\musicPlayer.cpp" />
     <ClCompile Include="Graphics\Natives\hexagon.cpp" />
     <ClCompile Include="Graphics\Natives\native.cpp" />
     <ClCompile Include="Graphics\Rendering\Renderable.cpp" />
@@ -37,8 +36,8 @@
     <ClCompile Include="Graphics\Window\timer.cpp" />
     <ClCompile Include="Graphics\Window\window.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="maths.cpp" />
-    <ClCompile Include="music.cpp" />
+    <ClCompile Include="Tools\maths.cpp" />
+    <ClCompile Include="Tools\music.cpp" />
     <ClCompile Include="TestApps\Hosono.cpp" />
     <ClCompile Include="TestApps\mapTest.cpp" />
     <ClCompile Include="TestApps\sheetTest.cpp" />
@@ -47,12 +46,11 @@
     <ClInclude Include="AloeApps\Cagiyama\timedCounter.h" />
     <ClInclude Include="AloeApps\Cagiyama\timeRect.h" />
     <ClInclude Include="AloeApps\Stronghold\debug\debug.h" />
-    <ClInclude Include="AloeApps\Stronghold\debug\debugOld.h" />
-    <ClInclude Include="AloeApps\Stronghold\gameBoard.h" />
     <ClInclude Include="AloeApps\Stronghold\gameMap.h" />
     <ClInclude Include="AloeApps\Stronghold\run\run.h" />
     <ClInclude Include="AloeApps\Stronghold\run\title.h" />
     <ClInclude Include="AloeApps\Stronghold\tools\grid.h" />
+    <ClInclude Include="AloeApps\Stronghold\tools\musicPlayer.h" />
     <ClInclude Include="Graphics\Natives\hexagon.h" />
     <ClInclude Include="Graphics\Natives\native.h" />
     <ClInclude Include="Graphics\Rendering\Renderable.h" />
@@ -61,8 +59,8 @@
     <ClInclude Include="Graphics\Window\mouse.h" />
     <ClInclude Include="Graphics\Window\timer.h" />
     <ClInclude Include="Graphics\Window\window.h" />
-    <ClInclude Include="maths.h" />
-    <ClInclude Include="music.h" />
+    <ClInclude Include="Tools\maths.h" />
+    <ClInclude Include="Tools\music.h" />
     <ClInclude Include="TestApps\Hosono.h" />
     <ClInclude Include="TestApps\mapTest.h" />
     <ClInclude Include="TestApps\sheetTest.h" />
@@ -78,9 +76,13 @@
     <None Include="zlib1.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="AloeApps\Stronghold\media\Bionic Leviathan.wav" />
     <Media Include="Media\Bionic Leviathan.wav" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="AloeApps\Stronghold\media\ForeverAlphaSTitle.png" />
+    <Image Include="AloeApps\Stronghold\media\HexSprites.png" />
+    <Image Include="AloeApps\Stronghold\media\MootTest00.png" />
     <Image Include="Media\Circle.bmp" />
     <Image Include="Media\Down_Arrow.bmp" />
     <Image Include="Media\FlatColourTest00.png" />
@@ -101,6 +103,8 @@
     <Image Include="Media\Up_Arrow.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <Font Include="AloeApps\Stronghold\media\lucon.ttf" />
+    <Font Include="AloeApps\Stronghold\media\NiseSega.ttf" />
     <Font Include="Media\lucon.ttf" />
     <Font Include="Media\NiseSega.ttf" />
   </ItemGroup>

@@ -2,9 +2,10 @@
 
 Grid::Grid(int boardRadius, Window* window, Renderer* renderer, Renderable* renderable, SDL_Rect* m_ViewPort)
 {
-	clearGrid(boardRadius);
-	clearObjectGrid(boardRadius);
-	clearOverlayGrid(boardRadius);
+	clearGrid();
+	clearObjectGrid();
+	clearOverlayGrid();
+	m_BoardRadius = boardRadius;
 
 	//define sprite sheet
 	for (int i = 0; i < 10; i++)
@@ -32,13 +33,13 @@ Grid::~Grid()
 
 }
 
-void Grid::clearGrid(int boardRadius)
+void Grid::clearGrid()
 {
-	for (int i = -boardRadius; i <= boardRadius; i++)
+	for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
 				m_Grid[25 + i][25 + j][25 + k] = 0;
 				m_GridLayeri[25 + i][25 + j][25 + k] = 0;
@@ -49,13 +50,13 @@ void Grid::clearGrid(int boardRadius)
 	}
 }
 
-void Grid::clearObjectGrid(int boardRadius)
+void Grid::clearObjectGrid()
 {
-	for (int i = -boardRadius; i <= boardRadius; i++)
+	for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
 				m_ObjectGrid[25 + i][25 + j][25 + k] = 0;
 			}
@@ -63,13 +64,13 @@ void Grid::clearObjectGrid(int boardRadius)
 	}
 }
 
-void Grid::clearOverlayGrid(int boardRadius)
+void Grid::clearOverlayGrid()
 {
-	for (int i = -boardRadius; i <= boardRadius; i++)
+	for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
 				m_OverlayGrid[25 + i][25 + j][25 + k] = 0;
 			}
@@ -77,9 +78,9 @@ void Grid::clearOverlayGrid(int boardRadius)
 	}
 }
 
-void Grid::printGrid(int radius,int boardRadius,Uint8 red,Uint8 green, Uint8 blue, int xOff, int yOff, Native* native, int hexSize, int width, int height)
+void Grid::printGrid(int radius, int xOff, int yOff, Native* native, int hexSize, int width, int height)
 {
-
+	Uint8 red, green, blue;
 	//Set Cursor Pos
 	//m_Grid[25 + m_CursorPos[0]][25 + m_CursorPos[1]][25 + m_CursorPos[2]] = 1;
 
@@ -87,11 +88,11 @@ void Grid::printGrid(int radius,int boardRadius,Uint8 red,Uint8 green, Uint8 blu
 	m_Grid[25 + m_SelectedHex[0]][25 + m_SelectedHex[1]][25 + m_SelectedHex[2]] = 25;
 	
 	//print tiles
-	for (int i = -boardRadius; i <= boardRadius; i++)
+	for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
 				if (m_Grid[25 + i][25 + j][25 + k] != 0 && i+j+k==0)
 				{
@@ -133,18 +134,18 @@ void Grid::printGrid(int radius,int boardRadius,Uint8 red,Uint8 green, Uint8 blu
 	draw( m_CursorPos[0], m_CursorPos[1], m_CursorPos[2], red, green, blue, xOff, yOff, native, hexSize, width, height);
 }
 
-void Grid::printObjectGrid(int radius, int boardRadius, Uint8 red, Uint8 green, Uint8 blue, int xOff, int yOff, Native* native, int hexSize, int width, int height)
+void Grid::printObjectGrid(int radius, int xOff, int yOff, Native* native, int hexSize, int width, int height)
 {
-
+	Uint8 red, green, blue;
 	//Set Cursor Pos
 	//m_ObjectGrid[25 + m_CursorPos[0]][25 + m_CursorPos[1]][25 + m_CursorPos[2]] = 99;
 
 	//print tiles
-	for (int i = -boardRadius; i <= boardRadius; i++)
+	for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
 				if (m_ObjectGrid[25 + i][25 + j][25 + k] != 0 && i + j + k == 0)
 				{
@@ -201,7 +202,7 @@ void Grid::printObjectGrid(int radius, int boardRadius, Uint8 red, Uint8 green, 
 	draw(25 + m_CursorPos[0], 25 + m_CursorPos[1], 25 + m_CursorPos[2], red, green, blue, xOff, yOff, native, hexSize, width, height);
 }
 
-void Grid::renderGrids(int radius, int boardRadius, Uint8 red, Uint8 green, Uint8 blue, int xOff, int yOff, Native * native, int hexSize, int width, int height)
+void Grid::renderGrids(int radius, int xOff, int yOff, Native * native, int hexSize, int width, int height)
 {
 	//background loop
 	//for (int i = 0; i <= width / m_sprite[0].w; i++)
@@ -216,11 +217,11 @@ void Grid::renderGrids(int radius, int boardRadius, Uint8 red, Uint8 green, Uint
 	int xPos;
 
 	//bkgrnd
-	for (int i = -boardRadius; i <= boardRadius; i++)
+	for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
 				if (i + j + k == 0)
 				{
@@ -234,11 +235,11 @@ void Grid::renderGrids(int radius, int boardRadius, Uint8 red, Uint8 green, Uint
 
 	//Layer 1
 	Uint8 surroundingTiles;
-	for (int i = -boardRadius; i <= boardRadius; i++)
+	for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
 				if (i + j + k == 0)
 				{
@@ -255,11 +256,11 @@ void Grid::renderGrids(int radius, int boardRadius, Uint8 red, Uint8 green, Uint
 	}
 
 	//Layer 2
-	for (int i = -boardRadius; i <= boardRadius; i++)
+	for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
 				if (i + j + k == 0)
 				{
@@ -305,118 +306,22 @@ void Grid::renderGrids(int radius, int boardRadius, Uint8 red, Uint8 green, Uint
 
 }
 
-void Grid::renderObjectGrid(int radius, int boardRadius, Uint8 red, Uint8 green, Uint8 blue, int xOff, int yOff, Native * native, int hexSize, int width, int height)
-{
-	//background loop
-	//for (int i = 0; i <= width / m_sprite[0].w; i++)
-	//{
-	//	for (int j = 0; j <= height / m_sprite[0].h; j++)
-	//	{
-	//		m_Renderer->render(m_sprite[0].w*i, m_sprite[0].h*j, m_Renderable->getRenderable(), &m_sprite[0], *m_ViewPort, 0, NULL, SDL_FLIP_NONE);
-	//	}
-	//}
-
-	int yPos;
-	int xPos;
-
-	for (int i = -boardRadius; i <= boardRadius; i++)
-	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
-		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
-			{
-				if (i + j + k == 0)
-				{
-					yPos = (1.5*j*hexSize - yOff + height / 2)-20;
-					xPos = i*hexSize*sin(1.0472) - xOff - k*hexSize*sin(1.0472)+(width/2)-20;
-					if (m_ObjectGrid[25 + i][25 + j][25 + k] == 0)
-					{
-						m_Renderer->render(xPos, yPos, m_Renderable->getRenderable(), &m_sprite[0], m_ViewPort, 0, NULL, SDL_FLIP_NONE);
-					}
-					else if (m_ObjectGrid[25 + i][25 + j][25 + k] == 30)
-					{
-						m_Renderer->render(xPos, yPos, m_Renderable->getRenderable(), &m_sprite[10], m_ViewPort, 0, NULL, SDL_FLIP_NONE);
-					}
-					else if (m_ObjectGrid[25 + i][25 + j][25 + k] == 29)
-					{
-						m_Renderer->render(xPos, yPos, m_Renderable->getRenderable(), &m_sprite[22], m_ViewPort, 0, NULL, SDL_FLIP_NONE);
-					}
-					else if (m_ObjectGrid[25 + i][25 + j][25 + k] == 28)
-					{
-						m_Renderer->render(xPos, yPos, m_Renderable->getRenderable(), &m_sprite[21], m_ViewPort, 0, NULL, SDL_FLIP_NONE);
-					}
-					else if (m_ObjectGrid[25 + i][25 + j][25 + k] == 27)
-					{
-						m_Renderer->render(xPos, yPos, m_Renderable->getRenderable(), &m_sprite[20], m_ViewPort, 0, NULL, SDL_FLIP_NONE);
-					}
-				}
-			}
-		}
-	}
-}
-
-void Grid::renderOverlayGrid(int radius, int boardRadius, Uint8 red, Uint8 green, Uint8 blue, int xOff, int yOff, Native * native, int hexSize, int width, int height)
-{
-	//background loop
-	//for (int i = 0; i <= width / m_sprite[0].w; i++)
-	//{
-	//	for (int j = 0; j <= height / m_sprite[0].h; j++)
-	//	{
-	//		m_Renderer->render(m_sprite[0].w*i, m_sprite[0].h*j, m_Renderable->getRenderable(), &m_sprite[0], *m_ViewPort, 0, NULL, SDL_FLIP_NONE);
-	//	}
-	//}
-
-	int yPos;
-	int xPos;
-
-	for (int i = -boardRadius; i <= boardRadius; i++)
-	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
-		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
-			{
-				if (i + j + k == 0)
-				{
-					yPos = (1.5*j*hexSize - yOff + height / 2) - 20;
-					xPos = i*hexSize*sin(1.0472) - xOff - k*hexSize*sin(1.0472) + (width / 2) - 20;
-					if (m_OverlayGrid[25 + i][25 + j][25 + k] == 2)
-					{
-						m_Renderer->render(xPos, yPos, m_Renderable->getRenderable(), &m_sprite[3], m_ViewPort, 0, NULL, SDL_FLIP_NONE);
-					}
-				}
-			}
-		}
-	}
-
-	yPos = (1.5*m_CursorPos[1] * hexSize - yOff + height / 2) - 20;
-	xPos = m_CursorPos[0] * hexSize*sin(1.0472) - xOff - m_CursorPos[2] * hexSize*sin(1.0472) + (width / 2) - 20;
-	m_Renderer->render(xPos, yPos, m_Renderable->getRenderable(), &m_sprite[1], m_ViewPort, 0, NULL, SDL_FLIP_NONE);
-
-	yPos = (1.5*m_SelectedHex[1] * hexSize - yOff + height / 2) - 20;
-	xPos = m_SelectedHex[0] * hexSize*sin(1.0472) - xOff - m_SelectedHex[2] * hexSize*sin(1.0472) + (width / 2) - 20;
-	if (m_SelectedHex[0] + m_SelectedHex[1] + m_SelectedHex[2] == 0)
-	{
-		m_Renderer->render(xPos, yPos, m_Renderable->getRenderable(), &m_sprite[2], m_ViewPort, 0, NULL, SDL_FLIP_NONE);
-	}
-	//m_Renderer->render(200, 200, m_Renderable->getRenderable(), &m_sprite[0], *m_ViewPort, 0, NULL, SDL_FLIP_NONE);
-
-}
-
 void Grid::draw(int i, int j, int k, Uint8 red, Uint8 green, Uint8 blue, int xOff, int yOff,Native* native,int hexSize, int width,int height)
 {
 	native->drawHexagon(hexSize*.75, (width / 2) + (i * hexSize*sin(1.0472) - k * hexSize*sin(1.0472)) - xOff, 1.5*j * hexSize + height / 2 - yOff, red, green, blue);
 }
 
-void Grid::bloom(int radius,int boardRadius)
+void Grid::bloom(int radius)
 {
+	clearGrid();
 	m_Grid[25 + m_SelectedHex[0]][25 + m_SelectedHex[1]][25 + m_SelectedHex[2]] = 25;
 	for (int r = 0; r < radius; r++)
 	{
-		for (int i = -boardRadius; i <= boardRadius; i++)
+		for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 		{
-			for (int j = -boardRadius; j <= boardRadius; j++)
+			for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 			{
-				for (int k = -boardRadius; k <= boardRadius; k++)
+				for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 				{
 					if (m_Grid[25 + i][25 + j][25 + k] == 25-r)
 					{
@@ -435,16 +340,16 @@ void Grid::bloom(int radius,int boardRadius)
 	//std::cout << radius << std::endl;
 }
 
-void Grid::heuristicBloom(int radius, int boardRadius)
+void Grid::heuristicBloom(int radius)
 {
 	m_Grid[25 + m_SelectedHex[0]][25 + m_SelectedHex[1]][25 + m_SelectedHex[2]] = 25;
 	for (int r = 0; r < radius; r++)
 	{
-		for (int i = -boardRadius; i <= boardRadius; i++)
+		for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 		{
-			for (int j = -boardRadius; j <= boardRadius; j++)
+			for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 			{
-				for (int k = -boardRadius; k <= boardRadius; k++)
+				for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 				{
 					if (m_Grid[25 + i][25 + j][25 + k] == 25 - r)
 					{
@@ -515,17 +420,17 @@ void Grid::heuristicBloom(int radius, int boardRadius)
 	}
 }
 
-bool Grid::cursorGrid(int width,int height,int radius, int boardRadius,bool mouseHeld,int xOff, int yOff,int hexSize,bool stateSwitch)
+bool Grid::cursorGrid(int width,int height,int radius,bool mouseHeld,int xOff, int yOff,int hexSize,bool stateSwitch)
 {
 	int xMin = 0;
 	int xMax = 0;
 	int yMin = 0;
 	int yMax = 0;
-	for (int i = -boardRadius; i <= boardRadius; i++)
+	for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
 				xMin = (i*hexSize*sin(1.0472) - k*hexSize*sin(1.0472)) - xOff + (width / 2) - (hexSize*.7);
 				xMax = (i*hexSize*sin(1.0472) - k*hexSize*sin(1.0472)) - xOff + (width / 2) + (hexSize*.7);
@@ -567,6 +472,7 @@ bool Grid::cursorGrid(int width,int height,int radius, int boardRadius,bool mous
 						m_SelectedHex[0] = 1;
 						m_SelectedHex[1] = 1;
 						m_SelectedHex[2] = 1;
+						clearGrid();
 						mouseHeld = true;
 					}
 					else if (!m_Window->getMouseButton() && mouseHeld)
@@ -596,20 +502,20 @@ void Grid::setCursor(int value)
 	std::cout << m_CursorPos[0] <<","<< m_CursorPos[1] <<","<< m_CursorPos[2] << "        "<< m_Grid[25 + m_CursorPos[0]][25 + m_CursorPos[1]][25 + m_CursorPos[2]]<< std::endl;
 }
 
-void Grid::randomizeGrid(int boardRadius)
+void Grid::randomizeGrid()
 {
-	clearOverlayGrid(boardRadius);
-	clearGrid(boardRadius);
+	clearOverlayGrid();
+	clearGrid();
 	srand(time(NULL));
 	m_RiverDirection = (rand() % 6)+1;
-	rollRivers(boardRadius);
+	rollRivers();
 	int roll = 0;
 
-	for (int i = -boardRadius; i <= boardRadius; i++)
+	for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
 				if (i + j + k == 0)
 				{
@@ -636,21 +542,21 @@ void Grid::randomizeGrid(int boardRadius)
 		}
 	}
 
-	expandGrid(boardRadius);
-	cleanGrid(boardRadius);
+	expandGrid();
+	cleanGrid();
 }
 
-void Grid::rollRivers(int boardRadius)
+void Grid::rollRivers()
 {
 	srand(time(NULL));
 	int roll = 0;
 
 	//if N->S 1
 	if (m_RiverDirection == 1) {
-		int j = -boardRadius;
-		for (int i = 0; i <= boardRadius; i++)
+		int j = -m_BoardRadius;
+		for (int i = 0; i <= m_BoardRadius; i++)
 		{
-			for (int k = boardRadius; k >= 0; k--)
+			for (int k = m_BoardRadius; k >= 0; k--)
 			{
 				if (i + j + k == 0)
 				{
@@ -663,11 +569,11 @@ void Grid::rollRivers(int boardRadius)
 		}
 
 		//N->S Loop
-		for (int j = -boardRadius; j <= boardRadius - 1; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius - 1; j++)
 		{
-			for (int i = -boardRadius; i <= boardRadius; i++)
+			for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 			{
-				for (int k = -boardRadius; k <= boardRadius; k++)
+				for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 				{
 					if (i + j + k == 0 && m_GridLayer1[25 + i][25 + j][25 + k] == 1)
 					{
@@ -693,10 +599,10 @@ void Grid::rollRivers(int boardRadius)
 
 	//if NW->SE 2
 	if (m_RiverDirection == 2) {
-		int i = boardRadius;
-		for (int j = -boardRadius; j <= 0; j++)
+		int i = m_BoardRadius;
+		for (int j = -m_BoardRadius; j <= 0; j++)
 		{
-			for (int k = 0; k >= -boardRadius; k--)
+			for (int k = 0; k >= -m_BoardRadius; k--)
 			{
 				if (i + j + k == 0)
 				{
@@ -709,11 +615,11 @@ void Grid::rollRivers(int boardRadius)
 		}
 
 		//NW->SE Loop
-		for (int i = boardRadius; i >= -boardRadius+1; i--)
+		for (int i = m_BoardRadius; i >= -m_BoardRadius+1; i--)
 		{
-			for (int j = -boardRadius; j <= boardRadius; j++)
+			for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 			{
-				for (int k = -boardRadius; k <= boardRadius; k++)
+				for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 				{
 					if (i + j + k == 0 && m_GridLayer1[25 + i][25 + j][25 + k] == 1)
 					{
@@ -739,10 +645,10 @@ void Grid::rollRivers(int boardRadius)
 
 	//if SW->NE 3
 	if (m_RiverDirection == 3) {
-		int k = -boardRadius;
-		for (int j = 0; j <= boardRadius; j++)
+		int k = -m_BoardRadius;
+		for (int j = 0; j <= m_BoardRadius; j++)
 		{
-			for (int i = boardRadius; i >= 0; i--)
+			for (int i = m_BoardRadius; i >= 0; i--)
 			{
 				if (i + j + k == 0)
 				{
@@ -755,11 +661,11 @@ void Grid::rollRivers(int boardRadius)
 		}
 
 		//NW->SE Loop
-		for (int k = -boardRadius; k <= boardRadius - 1; k++)
+		for (int k = -m_BoardRadius; k <= m_BoardRadius - 1; k++)
 		{
-			for (int j = -boardRadius; j <= boardRadius; j++)
+			for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 			{
-				for (int i = -boardRadius; i <= boardRadius; i++)
+				for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 				{
 					if (i + j + k == 0 && m_GridLayer1[25 + i][25 + j][25 + k] == 1)
 					{
@@ -785,10 +691,10 @@ void Grid::rollRivers(int boardRadius)
 
 	//if S->N 4
 	if (m_RiverDirection == 4) {
-		int j = boardRadius;
-		for (int i = 0; i >= -boardRadius; i--)
+		int j = m_BoardRadius;
+		for (int i = 0; i >= -m_BoardRadius; i--)
 		{
-			for (int k = -boardRadius; k <= 0; k++)
+			for (int k = -m_BoardRadius; k <= 0; k++)
 			{
 				if (i + j + k == 0)
 				{
@@ -801,11 +707,11 @@ void Grid::rollRivers(int boardRadius)
 		}
 
 		//S->N Loop
-		for (int j = boardRadius; j >= -boardRadius+1; j--)
+		for (int j = m_BoardRadius; j >= -m_BoardRadius+1; j--)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
-				for (int i = -boardRadius; i <= boardRadius; i++)
+				for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 				{
 					if (i + j + k == 0 && m_GridLayer1[25 + i][25 + j][25 + k] == 1)
 					{
@@ -831,10 +737,10 @@ void Grid::rollRivers(int boardRadius)
 
 	//if SW->NE 5
 	if (m_RiverDirection == 5) {
-		int i = -boardRadius;
-		for (int j = boardRadius; j >= 0; j--)
+		int i = -m_BoardRadius;
+		for (int j = m_BoardRadius; j >= 0; j--)
 		{
-			for (int k = 0; k <= boardRadius; k++)
+			for (int k = 0; k <= m_BoardRadius; k++)
 			{
 				if (i + j + k == 0)
 				{
@@ -847,11 +753,11 @@ void Grid::rollRivers(int boardRadius)
 		}
 
 		//SW->NE Loop
-		for (int i = -boardRadius; i <= boardRadius-1; i++)
+		for (int i = -m_BoardRadius; i <= m_BoardRadius-1; i++)
 		{
-			for (int j = -boardRadius; j <= boardRadius; j++)
+			for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 			{
-				for (int k = -boardRadius; k <= boardRadius; k++)
+				for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 				{
 					if (i + j + k == 0 && m_GridLayer1[25 + i][25 + j][25 + k] == 1)
 					{
@@ -877,10 +783,10 @@ void Grid::rollRivers(int boardRadius)
 
 	//if NW->SE 6
 	if (m_RiverDirection == 6) {
-		int k = boardRadius;
-		for (int j = 0; j >= -boardRadius; j--)
+		int k = m_BoardRadius;
+		for (int j = 0; j >= -m_BoardRadius; j--)
 		{
-			for (int i = -boardRadius; i <= 0; i++)
+			for (int i = -m_BoardRadius; i <= 0; i++)
 			{
 				if (i + j + k == 0)
 				{
@@ -893,11 +799,11 @@ void Grid::rollRivers(int boardRadius)
 		}
 
 		//NW->SE Loop
-		for (int k = boardRadius; k >= -boardRadius-1; k--)
+		for (int k = m_BoardRadius; k >= -m_BoardRadius-1; k--)
 		{
-			for (int i = -boardRadius; i <= boardRadius; i++)
+			for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 			{
-				for (int j = -boardRadius; j <= boardRadius; j++)
+				for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 				{
 					if (i + j + k == 0 && m_GridLayer1[25 + i][25 + j][25 + k] == 1)
 					{
@@ -922,7 +828,7 @@ void Grid::rollRivers(int boardRadius)
 	}
 }
 
-void Grid::expandGrid(int boardRadius)
+void Grid::expandGrid()
 {
 	//Lakes will need to work slightly seperate since they cannot have sudden changes of depthe like forest or rock.
 
@@ -930,11 +836,11 @@ void Grid::expandGrid(int boardRadius)
 	std::vector<int> tiertwo = {28,34};
 	std::vector<int> tierthr = { 29,35 };
 	//expand tier three
-	for (int i = -boardRadius; i <= boardRadius; i++)
+	for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
 				if (i + j + k == 0)
 				{
@@ -1000,11 +906,11 @@ void Grid::expandGrid(int boardRadius)
 	}
 
 	//expand tier two
-	for (int i = -boardRadius; i <= boardRadius; i++)
+	for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
 				if (i + j + k == 0)
 				{
@@ -1070,7 +976,7 @@ void Grid::expandGrid(int boardRadius)
 	}
 }
 
-void Grid::cleanGrid(int boardRadius)
+void Grid::cleanGrid()
 {
 	srand(time(NULL));
 	std::vector<int> tierone = { 27,33 };
@@ -1079,11 +985,11 @@ void Grid::cleanGrid(int boardRadius)
 	int roll = 0;
 	Uint8 compare;
 	//remove tier one
-	for (int i = -boardRadius; i <= boardRadius; i++)
+	for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
 				if (i + j + k == 0)
 				{
@@ -1098,11 +1004,11 @@ void Grid::cleanGrid(int boardRadius)
 	}
 
 	//reduce tier two
-	for (int i = -boardRadius; i <= boardRadius; i++)
+	for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
 				if (i + j + k == 0)
 				{
@@ -1124,11 +1030,11 @@ void Grid::cleanGrid(int boardRadius)
 	}
 
 	//reduce tier three
-	for (int i = -boardRadius; i <= boardRadius; i++)
+	for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
 				if (i + j + k == 0)
 				{
@@ -1150,11 +1056,11 @@ void Grid::cleanGrid(int boardRadius)
 	}
 
 	//reduce tier two second wave
-	for (int i = -boardRadius; i <= boardRadius; i++)
+	for (int i = -m_BoardRadius; i <= m_BoardRadius; i++)
 	{
-		for (int j = -boardRadius; j <= boardRadius; j++)
+		for (int j = -m_BoardRadius; j <= m_BoardRadius; j++)
 		{
-			for (int k = -boardRadius; k <= boardRadius; k++)
+			for (int k = -m_BoardRadius; k <= m_BoardRadius; k++)
 			{
 				if (i + j + k == 0)
 				{
@@ -1503,7 +1409,7 @@ int Grid::gridEffect(int i, int j, int k, int step)
 	Although there is no overlap with the sub 25 values and the object grid they are seperated for safety purposes.
 	*/
 
-	switch (m_GridLayer2[i][j][k]) 
+	switch (m_ObjectGrid[i][j][k]) 
 	{
 	case 27:
 		step -= 1;

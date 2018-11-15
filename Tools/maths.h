@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "Graphics\Window\window.h"
+#include "..\Graphics\Window\window.h"
 
 #define PI 3.14159265
 
