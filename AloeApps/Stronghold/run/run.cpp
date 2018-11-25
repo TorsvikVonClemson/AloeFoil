@@ -7,9 +7,7 @@ Run::Run(int width, int height, Window * window, Renderer * renderer)
 
 	m_Window = window;
 	m_Renderer = renderer;
-	//	Music music;
 
-	//music.loadMusic();
 }
 
 void Run::controlSwitcher()
@@ -47,6 +45,17 @@ void Run::controlSwitcher()
 			else
 			{
 				m_State = (m_GameMap->run());
+			}
+			break;
+		case 3:
+			if (m_Title != NULL) { delete m_Title; m_Title = NULL; }
+			if (m_MusicPlayer == NULL)
+			{
+				m_MusicPlayer = new MusicPlayer();
+			}
+			else
+			{
+				m_State = (m_MusicPlayer->musicRoom());
 			}
 			break;
 	}

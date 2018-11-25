@@ -72,6 +72,8 @@ bool TrueType::loadFromRenderedText(std::string textureText, SDL_Color textColor
 	//Get rid of preexisting texture
 	free();
 
+	//printf("Button Name: %s \n", &textureText);
+
 	//Render text surface
 	SDL_Surface* textSurface = TTF_RenderText_Blended_Wrapped(m_Font, textureText.c_str(), textColor,width);
 	if (textSurface == NULL)

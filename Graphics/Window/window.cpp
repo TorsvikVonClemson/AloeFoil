@@ -6,7 +6,10 @@ Window::Window(const char *title, int width, int height)
 	m_Width = width;
 	m_Height = height;
 	m_CurrentKeyStates = NULL;
+	m_Ticks= new Timer;
+	m_Frames = new Timer;
 	init();
+	m_Ticks->start();
 }
 
 Window::~Window()
@@ -30,6 +33,11 @@ const Uint8* Window::getKeyPressed()
 	return m_CurrentKeyStates;
 }
 
+int Window::getWidth()
+{
+	return m_Width;
+}
+
 int Window::getMousePosX()
 {
 	return m_MousePosX;
@@ -40,6 +48,11 @@ int Window::getMousePosY()
 	return m_MousePosY;
 }
 
+int Window::getFrame()
+{
+	return m_CurrentFrame;
+}
+
 bool Window::getMouseButton()
 {
 	return m_MouseDown;
@@ -47,7 +60,7 @@ bool Window::getMouseButton()
 
 SDL_Surface* Window::loadSurface(const char *image)
 {
-	m_ImageMedia = IMG_Load(image);
+	m_ImageMedia = IMG_Load(image); 
 	SDL_Surface* optimizedSurface = NULL;
 
 	if (m_ImageMedia == NULL)
@@ -76,6 +89,12 @@ bool Window::isClosed()
 	return m_IsClosed;
 }
 
+void Window::setFrame(int f)
+{
+	//manually set the current frame
+	m_CurrentFrame = f;
+}
+
 void Window::close()
 {
 	SDL_FreeSurface(m_ImageMedia);
@@ -88,8 +107,9 @@ void Window::close()
 	m_IsClosed = true;
 }
 
-void Window::update()
+void Window::update()//updates keys and frames
 {
+
 	while (SDL_PollEvent(&e) != 0)
 	{
 		if (e.type == SDL_QUIT) {close();}
@@ -100,6 +120,13 @@ void Window::update()
 		m_MousePosY = m_Mouse.getPosition().y;
 		m_MouseDown = m_Mouse.getButton();
 	}
+
+	int i = 0;
+
+	m_AvgFPS = m_CurrentFrame / (m_Ticks->getTicks() / 1000.f); if (m_AvgFPS > 2000000) { m_AvgFPS = 0; }
+	++m_CurrentFrame;
+	if (m_Frames->getTicks() < 1000 / 60) { SDL_Delay(1000 / 60 - m_Frames->getTicks()); }
+	//std::cout << "Avg FPS: " << avgFPS << std::endl;
 }
 
 bool Window::init()
@@ -113,7 +140,7 @@ bool Window::init()
 	else
 	{
 		//create window
-		m_Window = SDL_CreateWindow("AloeFoil", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, m_Width, m_Height, SDL_WINDOW_SHOWN);
+		m_Window = SDL_CreateWindow("AloeFoil", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, m_Width, m_Height, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 		if (m_Window == NULL)
 		{
 			printf("Window failed to initialize! SDL Error: %s\n", SDL_GetError());

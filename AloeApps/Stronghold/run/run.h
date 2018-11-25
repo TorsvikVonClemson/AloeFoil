@@ -5,6 +5,7 @@
 #include "title.h"
 #include "..\debug\debug.h"
 #include "..\gameMap.h"
+#include "..\tools\musicPlayer.h"
 
 class Run
 {
@@ -24,4 +25,5 @@ private:
 	Title* m_Title = NULL;
 	Debug* m_Debug = NULL;
 	GameMap* m_GameMap = NULL;
+	MusicPlayer* m_MusicPlayer = NULL;
 };

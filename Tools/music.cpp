@@ -8,10 +8,12 @@ Music::Music()
 
 void Music::loadMusic()
 {
-	m_Music = Mix_LoadMUS("Media/Bionic Leviathan.wav");
-	if (m_Music == NULL)
-	{
-		printf("Failed to load music!");
+	if (!Mix_PlayingMusic()) {
+		m_Music = Mix_LoadMUS("AloeApps/Stronghold/Media/BionicLeviathan.wav");
+		if (m_Music == NULL)
+		{
+			printf("Failed to load music!");
+		}
+		Mix_PlayMusic(m_Music, -1);
 	}
-	Mix_PlayMusic(m_Music, -1);
 }

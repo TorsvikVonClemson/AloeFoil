@@ -81,6 +81,9 @@
     <ClCompile Include="AloeApps\Stronghold\tools\musicPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Tools\button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graphics\Natives\hexagon.h">
@@ -144,6 +147,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AloeApps\Stronghold\tools\musicPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools\button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

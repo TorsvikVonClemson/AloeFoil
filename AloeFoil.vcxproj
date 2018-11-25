@@ -36,6 +36,7 @@
     <ClCompile Include="Graphics\Window\timer.cpp" />
     <ClCompile Include="Graphics\Window\window.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Tools\button.cpp" />
     <ClCompile Include="Tools\maths.cpp" />
     <ClCompile Include="Tools\music.cpp" />
     <ClCompile Include="TestApps\Hosono.cpp" />
@@ -59,6 +60,7 @@
     <ClInclude Include="Graphics\Window\mouse.h" />
     <ClInclude Include="Graphics\Window\timer.h" />
     <ClInclude Include="Graphics\Window\window.h" />
+    <ClInclude Include="Tools\button.h" />
     <ClInclude Include="Tools\maths.h" />
     <ClInclude Include="Tools\music.h" />
     <ClInclude Include="TestApps\Hosono.h" />

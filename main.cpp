@@ -6,11 +6,9 @@ PRE_MODE KEY
 */
 
 #define PRE_MODE 1
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
 
 #include <string>
-#include <time.h>
+
 #include <iostream>
 #include <sstream>
 
@@ -23,6 +21,7 @@ PRE_MODE KEY
 #include "..\..\AloeApps\Stronghold\run\run.h"
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
+
 
 #elif PRE_MODE==2
 #include "AloeApps\Cagiyama\timedCounter.h"
@@ -37,13 +36,6 @@ int main(int argc, char* args[])
 	  
 	Window window("Aloe Foil", SCREEN_WIDTH, SCREEN_HEIGHT);
 	Renderer renderer(window.getWindow());
-	Timer ticks;
-	Timer frames;
-
-	float avgFPS = 0;	
-	int countedFrames = 0;
-	ticks.start();	
-	int i = 0;
 
 #if PRE_MODE==1
 	Run stronghold(SCREEN_WIDTH,SCREEN_HEIGHT,&window,&renderer);
@@ -62,12 +54,7 @@ int main(int argc, char* args[])
 #endif
 
 		renderer.display();
-	
-		avgFPS = countedFrames / (ticks.getTicks() / 1000.f); if (avgFPS > 2000000) { avgFPS = 0; }
-		++countedFrames;
-		if (frames.getTicks() < 1000 / 60) { SDL_Delay(1000 / 60 - frames.getTicks()); }
-		//std::cout << "Avg FPS: " << avgFPS << std::endl;
-	
+
 	}
 	return 0;
 }

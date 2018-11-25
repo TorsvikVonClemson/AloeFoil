@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "mouse.h"
+#include "timer.h"
 
 #include <SDL.h> 
 #include <SDL_image.h>
@@ -14,10 +15,13 @@ public:
 	~Window();
 	SDL_Window* getWindow();
 	const Uint8* getKeyPressed();
+	int getWidth();
 	int getMousePosX();
 	int getMousePosY();
+	int getFrame();
 	bool getMouseButton();
 	bool isClosed();
+	void setFrame(int f);
 	void close();
 	void update();
 
@@ -41,8 +45,11 @@ private:
 	int m_Height;
 	int m_MousePosX=0;
 	int m_MousePosY=0;
+	int m_CurrentFrame = 0;
+	float m_AvgFPS = 0;
 	bool m_MouseDown = false;
 	bool m_IsClosed = false;
+
 
 
 	std::string m_path = "StrongestFairy.png";
@@ -55,6 +62,7 @@ private:
 	SDL_Surface* m_ImageMedia = NULL;
 	SDL_Surface* m_CurrentSurface = NULL;
 	//SDL_Surface* m_KeyPressSurfaces[KEY_PRESS_SURFACE_TOTAL];
-
+	Timer* m_Ticks;
+	Timer* m_Frames;
 
 };

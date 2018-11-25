@@ -8,6 +8,7 @@
 #include "..\..\Graphics\Rendering\Renderer.h"
 #include "..\..\Graphics\Rendering\trueType.h"
 #include "..\..\Tools\maths.h"
+#include "..\..\Tools\button.h"
 
 class Title
 {
@@ -17,13 +18,9 @@ public:
 	int run();
 	bool front();
 	int menu();
-	bool button(Window* window, int xMin, int xMax, int yMin, int yMax);
-	bool label(int xPos,int yPos,int xWidth,int yHeight, std::string text);
 private:
 	int m_Width;
 	int m_Height;
-	int m_Frame = 0;
-	int m_HalfFrame = 0;
 	int m_State=0;
 
 	bool m_Highlight = false;
@@ -37,6 +34,7 @@ private:
 	Renderable* m_SpriteSheet = NULL;
 	Renderable* m_MootSheet = NULL;
 	Window* m_Window = NULL;
-	TrueType* m_SEGAFont = NULL;
+	TrueType* m_Font = NULL;
 	Maths* m_Maths = NULL;
+	std::vector<Button> m_Button;
 };
