@@ -107,14 +107,14 @@ void TimedCounter::run(int frame)
 	//std::string count = "$" + std::to_string(m_TimedCount / 4);
 	//if (m_TimedCount % 4 !=0){count = count + "." + std::to_string(m_TimedCount % 4 * 25); }	
 	std::string count = std::to_string(m_FailCount) +" Deaths";
-	m_Font->loadFromRenderedText(count, textColor, 0, 0, 0, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_Font->loadFromRenderedText(count, textColor, 0, 0, 0, NULL, 0, NULL, SDL_FLIP_NONE, false);
 	int yOff= m_Font->getHeight();
 
 	count = std::to_string(m_RetryCount) + " Attempts";
-	m_Font->loadFromRenderedText(count, textColor, 0, yOff, 0, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_Font->loadFromRenderedText(count, textColor, 0, yOff, 0, NULL, 0, NULL, SDL_FLIP_NONE, false);
 
 	float QC = m_FailCount;
 	//std::string dph = "$'s per Hour: " + std::to_string(((QC/4)*60*60*60) / (frame));
 	std::string dph = "Deaths per hr: " + std::to_string(((QC)*60*60*60) / (frame));
-	m_Font->loadFromRenderedText(dph, textColor, m_Width/3, 0, 0, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_Font->loadFromRenderedText(dph, textColor, m_Width/3, 0, 0, NULL, 0, NULL, SDL_FLIP_NONE, false);
 }

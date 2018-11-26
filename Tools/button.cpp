@@ -48,6 +48,8 @@ void Button::setEffect(int effect, SDL_Color textColor)
 bool Button::render(SDL_Rect* viewPort)
 {
 	int offset = 0;
+	int resizeX=1;
+	int resizeY = 1;
 	
 
 	SDL_RenderSetScale(m_Renderer->getRenderer(), 1, 1);
@@ -89,26 +91,45 @@ bool Button::render(SDL_Rect* viewPort)
 	m_Renderer->render(m_X + (m_W * m_Sprite[3].w), (m_Y)+(m_H * m_Sprite[3].w), m_Sheet->getRenderable(), &m_Sprite[10], viewPort, 180, NULL, SDL_FLIP_NONE);
 
 	//Text
+	//prerender
+	m_Font->loadFromRenderedText(m_Text, m_TextColor, (m_X)+(1 * m_Sprite[3].w), m_Y + 5, m_W, NULL, 0, NULL, SDL_FLIP_NONE, true);
+	float resize = 1;
+	if (m_Font->getWidth() > (m_W - 2)*m_SpriteSize) 
+	{
+		resize = (float)((m_W - 1)*m_SpriteSize) / (float)(m_Font->getWidth());
+		//std::cout << resize << std::endl;
+		SDL_RenderSetScale(m_Renderer->getRenderer(),resize,resize);
+	}
+	else if (m_Font->getHeight() > (m_H - 2)*m_SpriteSize)
+	{
+		resize = (float)((m_H - 1)*m_SpriteSize) / (float)(m_Font->getHeight());
+		//std::cout << resize << std::endl;
+		SDL_RenderSetScale(m_Renderer->getRenderer(), resize, resize);
+	}
+	float posX = (float)m_X/resize;
+	posX += (m_W + 1)*((float)(m_SpriteSize) / 2)/resize;
+	posX-=((float)(m_Font->getWidth())/2);
 
-	float length = m_Text.length();
-	float resize = 5 / length;
-	int hardSize = m_Sprite[3].w;
-	SDL_RenderSetScale(m_Renderer->getRenderer(), resize, resize);
+	float posY = m_Y / resize;
+	posY += (float)(((m_H + 1)*m_SpriteSize) / 2) / resize;
+	posY-=(float)(m_Font->getHeight() / 2);
+
+	std::cout << m_Font->getWidth() << std::endl;
 	if (m_Effect==1 && m_Highlight)
 	{
 		std::string single;
 		for (unsigned i = 0; i < m_Text.length(); ++i)
 		{
 			single = m_Text.at(i);
-			m_Font->loadFromRenderedText(single, m_TextColor, ((m_X)+(1 * hardSize)) / resize + offset,
-				(m_Y + (1.25 * hardSize)) / resize + 5 / resize + round((8 * m_Maths->sinWave(0, 60, (i * 12) + m_Window->getFrame()))), 
-				m_Window->getWidth(), NULL, 0, NULL, SDL_FLIP_NONE);
+			m_Font->loadFromRenderedText(single, m_TextColor, posX+offset,
+				 posY + round((8 * m_Maths->sinWave(0, 60, (i * 12) + m_Window->getFrame()))),
+				m_Window->getWidth(), NULL, 0, NULL, SDL_FLIP_NONE,false);
 			offset += m_Font->getWidth();
 		}
 	}
 	else
 	{
-		m_Font->loadFromRenderedText(m_Text, m_TextColor, ((m_X)+(1 * m_Sprite[3].w)) / resize, (m_Y + (1.25 * hardSize)) / resize + 5 / resize, m_W, NULL, 0, NULL, SDL_FLIP_NONE);
+		m_Font->loadFromRenderedText(m_Text, m_TextColor, float(posX), posY, m_W, NULL, 0, NULL, SDL_FLIP_NONE,false);
 	}
 	return events();//returns true if it has been pressd while setting other flags
 }
@@ -119,14 +140,9 @@ bool Button::events()
 	if (m_Maths->findRect(m_Window, m_X, m_X+((1+m_W)*m_SpriteSize), m_Y, m_Y + ((1+m_H)*m_SpriteSize)))
 	{
 		m_Highlight = true;
-		if (m_Window->getMouseButton() == SDL_BUTTON_LEFT && !m_MouseHeld) //the button has been clicked proper
+		if (m_Window->getMouseButton() == SDL_BUTTON_LEFT && !m_Window->getMouseHeld()) //the button has been clicked proper
 		{
-			m_MouseHeld = true;
 			return true;
-		}
-		else if (!m_Window->getMouseButton() == SDL_BUTTON_LEFT && m_MouseHeld)
-		{
-			m_MouseHeld = false;
 		}
 		return false;
 	}

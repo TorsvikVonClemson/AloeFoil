@@ -15,7 +15,8 @@ public:
 	TrueType(Renderer* renderer);
 	~TrueType();
 	bool loadFromFile(std::string path);//load file from specifc path
-	bool loadFromRenderedText(std::string textureText, SDL_Color textColor, int x, int y,int width, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip);//Creates image from font string																			//Set color modulation
+	bool loadFromRenderedText(std::string textureText, SDL_Color textColor, 
+		int x, int y,int width, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip, bool prerender);//Creates image from font string																			//Set color modulation
 	void setColor(Uint8 red, Uint8 green, Uint8 blue);
 	void setBlendMode(SDL_BlendMode blending);
 	void setAlpha(Uint8 alpha);

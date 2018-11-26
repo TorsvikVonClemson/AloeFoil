@@ -64,7 +64,8 @@ bool TrueType::loadFromFile(std::string path)
 		return m_Texture != NULL;
 }
 
-bool TrueType::loadFromRenderedText(std::string textureText, SDL_Color textColor, int x, int y, int width,SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip)
+bool TrueType::loadFromRenderedText(std::string textureText, SDL_Color textColor, 
+	int x, int y, int width,SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip flip, bool prerender)
 {
 	//Common format example
 	//		text.loadFromRenderedText("Testing...", textColor,0,0,NULL,0,NULL, SDL_FLIP_NONE);
@@ -110,7 +111,8 @@ bool TrueType::loadFromRenderedText(std::string textureText, SDL_Color textColor
 		}
 
 		//Render to screen
-		SDL_RenderCopyEx(m_Renderer, m_Texture, clip, &renderQuad, angle, center, flip);
+		if (!prerender){ SDL_RenderCopyEx(m_Renderer, m_Texture, clip, &renderQuad, angle, center, flip); }
+		
 	}
 
 	//Return success

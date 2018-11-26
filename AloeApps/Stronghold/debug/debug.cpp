@@ -140,7 +140,7 @@ void Debug::borderMenu()
 	SDL_Color textColor = { 0xFF, 0xFF, 0xFF };
 
 	text = "Mode:";
-	m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, m_Width, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, m_Width, NULL, 0, NULL, SDL_FLIP_NONE,false);
 	textOffsetX += 10 + m_SEGAFont->getWidth();
 
 
@@ -187,7 +187,7 @@ void Debug::mode0Menu(int textOffsetX, int textOffsetY, int boxWidth)
 
 
 	text = "Blank Grid";
-	m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, m_Width, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, m_Width, NULL, 0, NULL, SDL_FLIP_NONE, false);
 
 
 	textOffsetX = 10 + 6 * m_Width / 8;
@@ -195,7 +195,7 @@ void Debug::mode0Menu(int textOffsetX, int textOffsetY, int boxWidth)
 
 	//Right Border
 	text = "Simply prints a grid.";
-	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE, false);
 	textOffsetY += 10 + m_ConsoleFont->getHeight();
 
 }
@@ -213,14 +213,14 @@ void Debug::mode1Menu(int textOffsetX, int textOffsetY, int boxWidth)
 	SDL_Color textColor = { 0xFF, 0xFF, 0xFF };
 
 	text = "Cursor";
-	m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, m_Width, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, m_Width, NULL, 0, NULL, SDL_FLIP_NONE, false);
 
 	textOffsetX = 10 + 6 * m_Width / 8;
 	textOffsetY = 10;
 
 	//Right Border
 	text = "Cursor on the mouse.";
-	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE, false);
 	textOffsetY += 10 + m_ConsoleFont->getHeight();
 
 }
@@ -251,14 +251,14 @@ void Debug::mode2Menu(int textOffsetX, int textOffsetY, int boxWidth)
 	SDL_Color textColor = { 0xFF, 0xFF, 0xFF };
 
 	text = "Locked Cursor";
-	m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, m_Width, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, m_Width, NULL, 0, NULL, SDL_FLIP_NONE, false);
 
 	textOffsetX = 10 + 6 * m_Width / 8;
 	textOffsetY = 10;
 
 	//Right Border
 	text = "Prints a cursor to the mouse, bound to the grid.";
-	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE, false);
 	textOffsetY += 10 + m_ConsoleFont->getHeight();
 }
 
@@ -378,14 +378,14 @@ void Debug::mode3Menu(int textOffsetX, int textOffsetY, int boxWidth)
 	SDL_Color textColor = { 0xFF, 0xFF, 0xFF };
 
 	text = "Basic Pathfind";
-	m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, m_Width, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, m_Width, NULL, 0, NULL, SDL_FLIP_NONE, false);
 
 	textOffsetX = 10 + 6 * m_Width / 8;
 	textOffsetY = 10;
 
 	//Right Border
 	text = "Select a hex. A basic path will be found between the selected hex and the cursor.";
-	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE, false);
 	textOffsetY += 10 + m_ConsoleFont->getHeight();
 }
 
@@ -413,22 +413,22 @@ void Debug::mode4Menu(int textOffsetX, int textOffsetY, int boxWidth)
 	SDL_Color textColor = { 0xFF, 0xFF, 0xFF };
 
 	text = "Bloom";
-	m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, m_Width, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, m_Width, NULL, 0, NULL, SDL_FLIP_NONE, false);
 
 	textOffsetX = 10 + 6 * m_Width / 8;
 	textOffsetY = 10;
 
 	//Right Border
 	text = "Select a hex. A radius will expand from the center.";
-	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE, false);
 	textOffsetY += 10 + m_ConsoleFont->getHeight();
 
 	text = "A pretense to pathfinding.";
-	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE, false);
 	textOffsetY += 10 + m_ConsoleFont->getHeight();
 
 	text = "Use numbers 0-9 to change radius.";
-	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE, false);
 	textOffsetY += 10 + m_ConsoleFont->getHeight();
 }
 
@@ -464,22 +464,22 @@ void Debug::mode5Menu(int textOffsetX, int textOffsetY, int boxWidth)
 	SDL_Color textColor = { 0xFF, 0xFF, 0xFF };
 
 	text = "Heuristic Bloom";
-	m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, m_Width, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, m_Width, NULL, 0, NULL, SDL_FLIP_NONE, false);
 
 	textOffsetX = 10 + 6 * m_Width / 8;
 	textOffsetY = 10;
 
 	//Right Border
 	text = "Select a hex. A radius will expand from the center favoring the current cursor position.";
-	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE, false);
 	textOffsetY += 10 + m_ConsoleFont->getHeight();
 
 	text = "Press [SPACE] to switch to the object painter.";
-	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE, false);
 	textOffsetY += 10 + m_ConsoleFont->getHeight();
 
 	text = "Use numbers 0-4 to change severity.";
-	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_ConsoleFont->loadFromRenderedText(text, textColor, textOffsetX, textOffsetY, boxWidth, NULL, 0, NULL, SDL_FLIP_NONE, false);
 	textOffsetY += 10 + m_ConsoleFont->getHeight();
 
 	//Bottom
@@ -487,14 +487,14 @@ void Debug::mode5Menu(int textOffsetX, int textOffsetY, int boxWidth)
 	for (int i = 0; i < 8; i++) { m_Native->rect(i, i+ m_Height - (m_Height / 8), (6 * m_Width / 8) - (2 * i), (m_Height / 8) - (2 * i), 0xFF - (i * 0x20), 0xFF - (i * 0x20), 0xFF - (i * 0x20)); }
 
 	text = "Painting ->";
-	m_SEGAFont->loadFromRenderedText(text, textColor, 10, m_Height - (m_Height / 8)+12, m_Width, NULL, 0, NULL, SDL_FLIP_NONE);
+	m_SEGAFont->loadFromRenderedText(text, textColor, 10, m_Height - (m_Height / 8)+12, m_Width, NULL, 0, NULL, SDL_FLIP_NONE, false);
 	textOffsetX = 10 + m_SEGAFont->getWidth();
 
 	if (!m_SpaceSwitch)
 	{
 		text = "Center";
 		textColor = { 0x00, 0xFF, 0x00 };
-		m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, m_Height - (m_Height / 8) + 12, m_Width, NULL, 0, NULL, SDL_FLIP_NONE);
+		m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, m_Height - (m_Height / 8) + 12, m_Width, NULL, 0, NULL, SDL_FLIP_NONE, false);
 	}
 	else
 	{
@@ -503,27 +503,27 @@ void Debug::mode5Menu(int textOffsetX, int textOffsetY, int boxWidth)
 		case 0:
 			text = "Deleting";
 			textColor = { 0x8F, 0x8F, 0x8F };
-			m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, m_Height - (m_Height / 8) + 12, m_Width, NULL, 0, NULL, SDL_FLIP_NONE);
+			m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, m_Height - (m_Height / 8) + 12, m_Width, NULL, 0, NULL, SDL_FLIP_NONE, false);
 			break;
 		case 1:
 			text = "Level 1";
 			textColor = { 0xFF, 0xFF, 0x00 };
-			m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, m_Height - (m_Height / 8) + 12, m_Width, NULL, 0, NULL, SDL_FLIP_NONE);
+			m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, m_Height - (m_Height / 8) + 12, m_Width, NULL, 0, NULL, SDL_FLIP_NONE, false);
 			break;
 		case 2:
 			text = "Level 2";
 			textColor = { 0xFF, 0x8F, 0x00 };
-			m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, m_Height - (m_Height / 8) + 12, m_Width, NULL, 0, NULL, SDL_FLIP_NONE);
+			m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, m_Height - (m_Height / 8) + 12, m_Width, NULL, 0, NULL, SDL_FLIP_NONE, false);
 			break;
 		case 3:
 			text = "Level 3";
 			textColor = { 0xFF, 0x00, 0x00 };
-			m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, m_Height - (m_Height / 8) + 12, m_Width, NULL, 0, NULL, SDL_FLIP_NONE);
+			m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, m_Height - (m_Height / 8) + 12, m_Width, NULL, 0, NULL, SDL_FLIP_NONE, false);
 			break;
 		case 4:
 			text = "Blocking";
 			textColor = { 0xFF, 0xFF, 0xFF };
-			m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, m_Height - (m_Height / 8) + 12, m_Width, NULL, 0, NULL, SDL_FLIP_NONE);
+			m_SEGAFont->loadFromRenderedText(text, textColor, textOffsetX, m_Height - (m_Height / 8) + 12, m_Width, NULL, 0, NULL, SDL_FLIP_NONE, false);
 			break;
 		}
 	}

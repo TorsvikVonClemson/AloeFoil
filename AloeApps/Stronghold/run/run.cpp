@@ -51,7 +51,7 @@ void Run::controlSwitcher()
 			if (m_Title != NULL) { delete m_Title; m_Title = NULL; }
 			if (m_MusicPlayer == NULL)
 			{
-				m_MusicPlayer = new MusicPlayer();
+				m_MusicPlayer = new MusicPlayer(m_Width, m_Height, m_Renderer, m_Window);
 			}
 			else
 			{

@@ -20,6 +20,7 @@ public:
 	int getMousePosY();
 	int getFrame();
 	bool getMouseButton();
+	bool getMouseHeld();
 	bool isClosed();
 	void setFrame(int f);
 	void close();
@@ -48,6 +49,7 @@ private:
 	int m_CurrentFrame = 0;
 	float m_AvgFPS = 0;
 	bool m_MouseDown = false;
+	bool m_MouseHeld = false;
 	bool m_IsClosed = false;
 
 

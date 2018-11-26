@@ -58,6 +58,11 @@ bool Window::getMouseButton()
 	return m_MouseDown;
 }
 
+bool Window::getMouseHeld()
+{
+	return m_MouseHeld;
+}
+
 SDL_Surface* Window::loadSurface(const char *image)
 {
 	m_ImageMedia = IMG_Load(image); 
@@ -109,6 +114,8 @@ void Window::close()
 
 void Window::update()//updates keys and frames
 {
+	if (m_MouseDown) { m_MouseHeld = true; }
+	else { m_MouseHeld = false; }
 
 	while (SDL_PollEvent(&e) != 0)
 	{
@@ -120,6 +127,7 @@ void Window::update()//updates keys and frames
 		m_MousePosY = m_Mouse.getPosition().y;
 		m_MouseDown = m_Mouse.getButton();
 	}
+
 
 	int i = 0;
 

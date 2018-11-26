@@ -27,7 +27,7 @@ public:
 private:
 	int m_X, m_Y, m_W, m_H, m_SpriteSize,m_ImgPos,m_Effect;
 
-	bool m_Highlight = false,m_Activate=false, m_MouseHeld=false;
+	bool m_Highlight = false,m_Activate=false;
 
 	std::string m_Text;
 
