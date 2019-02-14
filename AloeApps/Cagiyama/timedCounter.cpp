@@ -1,4 +1,5 @@
 #include "timedCounter.h"
+#define Type 2
 
 TimedCounter::TimedCounter(int width, int height, Window* window, Renderer* renderer)
 {
@@ -104,17 +105,24 @@ void TimedCounter::run(int frame)
 	}
 
 
-	//std::string count = "$" + std::to_string(m_TimedCount / 4);
-	//if (m_TimedCount % 4 !=0){count = count + "." + std::to_string(m_TimedCount % 4 * 25); }	
+#if Type==1 
+	std::string count = "$" + std::to_string(m_FailCount / 4);
+	if (m_FailCount % 4 !=0){count = count + "." + std::to_string(m_FailCount % 4 * 25); }	
+#elif Type==2
 	std::string count = std::to_string(m_FailCount) +" Deaths";
+#endif
+
 	m_Font->loadFromRenderedText(count, textColor, 0, 0, 0, NULL, 0, NULL, SDL_FLIP_NONE, false);
 	int yOff= m_Font->getHeight();
 
-	count = std::to_string(m_RetryCount) + " Attempts";
+	count = std::to_string(m_RetryCount) + " Continues";
 	m_Font->loadFromRenderedText(count, textColor, 0, yOff, 0, NULL, 0, NULL, SDL_FLIP_NONE, false);
 
 	float QC = m_FailCount;
-	//std::string dph = "$'s per Hour: " + std::to_string(((QC/4)*60*60*60) / (frame));
-	std::string dph = "Deaths per hr: " + std::to_string(((QC)*60*60*60) / (frame));
+#if Type==1
+	std::string dph = "$'s per Hour: " + std::to_string(((QC/4)*60*60*60) / (frame));
+#elif Type==2
+	std::string dph = "Deaths Per Hour: " + std::to_string(((QC)*60*60*60) / (frame));
+#endif
 	m_Font->loadFromRenderedText(dph, textColor, m_Width/3, 0, 0, NULL, 0, NULL, SDL_FLIP_NONE, false);
 }

@@ -50,11 +50,10 @@ int main(int argc, char* args[])
 #if PRE_MODE==1
 		stronghold.controlSwitcher();
 #elif PRE_MODE==2
-		timedCounter.run(countedFrames);
+		timedCounter.run(window.getFrame());
 #endif
 
 		renderer.display();
-
 	}
 	return 0;
 }
