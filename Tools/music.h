@@ -8,7 +8,8 @@ class Music
 {
 public:
 	Music();
-	void loadMusic();
+	void loadMusic(std::string text);
+	void stop();
 private:
 	Mix_Music *m_Music = NULL;
 };

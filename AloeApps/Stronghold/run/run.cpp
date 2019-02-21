@@ -16,6 +16,7 @@ void Run::controlSwitcher()
 	{
 		case 0:
 			if (m_Debug != NULL) { delete m_Debug; m_Debug = NULL; }
+			if (m_GameMap != NULL) { delete m_GameMap; m_GameMap = NULL; }
 			if (m_Title == NULL)
 			{
 				m_Title=new Title(m_Width,m_Height,m_Renderer,m_Window);

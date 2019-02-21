@@ -2,6 +2,8 @@
 
 GameMap::GameMap(int width, int height, Renderer * renderer, Window * window)
 {
+	m_StatePosition = 2;
+
 	m_Renderer = renderer;
 	m_HexSize = 20;
 	m_BoardRadius = 20;
@@ -36,6 +38,13 @@ GameMap::GameMap(int width, int height, Renderer * renderer, Window * window)
 	m_CentOffsetY = 0;
 }
 
+GameMap::~GameMap()
+{
+	delete m_Native;
+	delete m_Renderable;
+	delete m_Grid;
+}
+
 int GameMap::run()
 {
 	int vi = 0;
@@ -59,7 +68,7 @@ int GameMap::run()
 
 	keyboard();
 
-	return 2;
+	return m_StatePosition;
 }
 
 void GameMap::keyboard()
@@ -78,4 +87,6 @@ void GameMap::keyboard()
 	if (m_KeyPressed[SDL_SCANCODE_UP] && !m_KeyPressed[SDL_SCANCODE_DOWN] && m_KeyPressed[SDL_SCANCODE_LEFT] && !m_KeyPressed[SDL_SCANCODE_RIGHT]) { m_CentOffsetY -= 5, m_CentOffsetX -= 5; }
 
 	if (m_KeyPressed[SDL_SCANCODE_R]) { m_Randomize = true; }
+
+	if (m_KeyPressed[SDL_SCANCODE_ESCAPE]) { m_StatePosition = 0; }
 }

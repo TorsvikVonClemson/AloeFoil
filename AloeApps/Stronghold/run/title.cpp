@@ -43,9 +43,10 @@ Title::Title(int width,int height, Renderer* renderer, Window* window)
 	m_Button[1].setEffect(1, { 0xFF, 0xFF, 0xFF });
 	m_Button.push_back(Button(m_Width - (8 * m_Sprite[3].w), 0 + (4 * m_Sprite[3].h), 7, 3,40, "ROLL_MAP", m_SpriteSheet, m_Font, m_Window, m_Renderer));
 	m_Button[2].setEffect(1, { 0xFF, 0xFF, 0xFF });
-	m_Button.push_back(Button(m_Width - (8 * m_Sprite[3].w), 0 + (8 * m_Sprite[3].h), 7, 3,40, "MUSIC_ROOM", m_SpriteSheet, m_Font, m_Window, m_Renderer));
+	m_Button.push_back(Button(m_Width - (8 * m_Sprite[3].w), 0 + (8 * m_Sprite[3].h), 7, 3,40, "MUSIC ROOM", m_SpriteSheet, m_Font, m_Window, m_Renderer));
 	m_Button[3].setEffect(1, { 0xFF, 0xFF, 0xFF });
-	//m_Button.push_back(Button(m_Width / 2 - (4 * m_Sprite[3].w), m_Height / 2, 7, 3, 40, "DEBUG", m_SpriteSheet, m_Font, m_Window, m_Renderer));
+	m_Button.push_back(Button(0, m_Height - (3 * m_Sprite[3].h), 2, 2, 40, "20", m_SpriteSheet, m_Font, m_Window, m_Renderer));
+	m_Button[4].setEffect(2, { 0xFF, 0xFF, 0xFF });
 
 	m_ViewPort.x = 0;
 	m_ViewPort.y = 0;
@@ -117,10 +118,11 @@ int Title::menu()
 	if (m_Button[1].render(&m_ViewPort)){return 1;}
 	if (m_Button[2].render(&m_ViewPort)){return 2;}
 	if (m_Button[3].render(&m_ViewPort)){return 3;}
+	if (m_Button[4].render(&m_ViewPort)) { return 9; }
 
 	//if (label(0, m_Height - (3 * m_Sprite[3].h), 2, 2, " ")) { return 9; }
 	SDL_RenderSetScale(m_Renderer->getRenderer(), 1, 1);
-	m_Renderer->render(0 + (1 * m_Sprite[3].h), m_Height - (2 * m_Sprite[3].h), m_SpriteSheet->getRenderable(), &m_Sprite[20], &m_ViewPort, 0, NULL, SDL_FLIP_NONE);
+	//m_Renderer->render(0 + (1 * m_Sprite[3].h), m_Height - (2 * m_Sprite[3].h), m_SpriteSheet->getRenderable(), &m_Sprite[20], &m_ViewPort, 0, NULL, SDL_FLIP_NONE);
 	return 0;
 }
 

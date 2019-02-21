@@ -28,6 +28,7 @@ private:
 	int m_CentOffsetX;
 	int m_CentOffsetY;
 	int m_Pace = 0;
+	int m_StatePosition;
 
 	double m_HexSize;
 

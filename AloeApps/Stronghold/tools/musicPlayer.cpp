@@ -31,8 +31,16 @@ MusicPlayer::MusicPlayer(int width, int height, Renderer* renderer, Window* wind
 
 	m_Button.push_back(Button((m_Width/2)- (m_Sprite[3].w*4.5), m_Sprite[3].h/2,8, 2, 40, "Music",
 		m_SpriteSheet, m_Font, m_Window, m_Renderer));
-	m_Button.push_back(Button((m_Width / 2) - (m_Sprite[3].w * 7.5), m_Sprite[3].h*3, 14, 2, 40, "XXXX",
+	m_Button.push_back(Button((m_Width / 2) - (m_Sprite[3].w * 6), m_Sprite[3].h*3, 11, 2, 40, m_Title[m_BGMTrack],
 		m_SpriteSheet, m_Font, m_Window, m_Renderer));
+	m_Button.push_back(Button(0, m_Sprite[3].h * 3, 2, 2, 40, "21",
+		m_SpriteSheet, m_Font, m_Window, m_Renderer));
+	m_Button[2].setEffect(3, { 0xFF, 0xFF, 0xFF });
+	m_Button.push_back(Button((m_Width / 2) + (m_Sprite[3].w * 5), m_Sprite[3].h * 3, 2, 2, 40, "21",
+		m_SpriteSheet, m_Font, m_Window, m_Renderer));
+	m_Button[3].setEffect(2, { 0xFF, 0xFF, 0xFF });
+	m_Button.push_back(Button(0, m_Height - (3 * m_Sprite[3].h), 2, 2, 40, "20", m_SpriteSheet, m_Font, m_Window, m_Renderer));
+	m_Button[4].setEffect(2, { 0xFF, 0xFF, 0xFF });
 }
 
 MusicPlayer::~MusicPlayer()
@@ -41,13 +49,27 @@ MusicPlayer::~MusicPlayer()
 
 void MusicPlayer::play()
 {
-	m_Music->loadMusic();
+	m_Music->loadMusic(m_Title[m_BGMTrack]);
 }
 
 int MusicPlayer::musicRoom()
 {
 	m_Button[0].render(&m_ViewPort);
 	m_Button[1].render(&m_ViewPort);
+	if (m_Button[2].render(&m_ViewPort)) {
+		if (m_BGMTrack>0) { m_BGMTrack--; }
+		else { m_BGMTrack = 1; }
+		m_Button[1].updateText(m_Title[m_BGMTrack]);
+		m_Music->stop();
+	}
+	if (m_Button[3].render(&m_ViewPort)){ 
+		if(m_BGMTrack<1){ m_BGMTrack++; }
+		else { m_BGMTrack = 0; }
+		m_Button[1].updateText(m_Title[m_BGMTrack]);
+		m_Music->stop();
+	}
+	if (m_Button[4].render(&m_ViewPort)) { m_Music->stop(); return 0; }
+
 	play();
 
 	return 3;

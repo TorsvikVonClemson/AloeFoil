@@ -24,5 +24,7 @@ private:
 	TrueType* m_Font = NULL;
 	Renderable* m_SpriteSheet;
 
+	std::string m_Title[2] = { "BionicLeviathan","SeismicEulogy"};
+
 	std::vector<Button> m_Button;
 };

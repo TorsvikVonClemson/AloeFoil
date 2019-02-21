@@ -23,6 +23,7 @@ public:
 	void setEffect(int effect, SDL_Color textColor);
 	bool render(SDL_Rect* viewPort);
 	bool events();
+	void updateText(std::string text);
 
 private:
 	int m_X, m_Y, m_W, m_H, m_SpriteSize,m_ImgPos,m_Effect;

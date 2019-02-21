@@ -119,11 +119,7 @@ void Debug::keyboard()
 
 	if (m_KeyPressed[SDL_SCANCODE_SPACE] && m_Delay <= 0) { m_SpaceSwitch = !m_SpaceSwitch; m_Delay = 10; }
 
-	if (m_KeyPressed[SDL_SCANCODE_ESCAPE])
-	{
-		m_Scene = 0;
-		//std::cout << "ESCAPE!"<< std::endl;
-	}
+	if (m_KeyPressed[SDL_SCANCODE_ESCAPE]){m_Scene = 0;}
 
 }
 
